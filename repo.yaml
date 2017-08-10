@@ -1,0 +1,8 @@
+apiVersion: "ci3.io/v1"
+kind: Repository
+metadata:
+  name: listner
+url: https://github.com/HealthSamurai/AppointmentListner
+fullName: HealthSamurai/AppointmentListner
+secret: mySecret
+
