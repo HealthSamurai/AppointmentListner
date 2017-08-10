@@ -22,4 +22,4 @@ pipeline:
 - type: bash
   command: docker push $DOCKER_REPO:latest
 - type: bash
-  command: helm upgrade --set image.tag=v_$GIT_COMMIT -i listmer listner
+  command: helm upgrade --set image.tag=v_$GIT_COMMIT -i listner listner
