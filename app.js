@@ -3,7 +3,9 @@ var http = require('http')
   , base = process.env.BASE_URL || "http://hackathon.dev.aidbox.io";
 
 var hl7 = function(appointment) {
-    console.log("Some HL7 for " + appointment.id)
+    var fo = "bar"
+    console.log(`|Some|HL7|^for|${appointment.id}
+|some|another|string`)
     //console.log(appointment);
 };
 
@@ -26,7 +28,7 @@ var processAppointment = function(appointments){
 };
 
 var poll = function(){
-    http.get(base + "/fhir/Appointment?status=active",  (res) => {
+    http.get(base + "/fhir/Appointment?_count=1",  (res) => {
         var body = '';
         res.on('data', function(chunk){
             body += chunk;});
@@ -36,9 +38,9 @@ var poll = function(){
     });
 };
 
-//poll();
+poll();
 
-setInterval(poll,  2000);
+//setInterval(poll,  2000);
 
 
 
