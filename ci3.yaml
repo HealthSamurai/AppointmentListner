@@ -12,11 +12,11 @@ pipeline:
 - type: env
   DOCKER_REPO: aidbox/listner
 - type: bash
+  command: docker login -p $DOCKER_PASSWORD -u $DOCKER_USER
+- type: bash
   command: docker build -t $DOCKER_REPO:v_$GIT_COMMIT .
 - type: bash
   command: docker tag $DOCKER_REPO:v_$GIT_COMMIT $DOCKER_REPO:latest
-- type: bash
-  command: docker login -p $DOCKER_PASSWORD -u $DOCKER_USER
 - type: bash
   command: docker push $DOCKER_REPO:v_$GIT_COMMIT
 - type: bash
