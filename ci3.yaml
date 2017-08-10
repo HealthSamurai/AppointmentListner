@@ -12,10 +12,8 @@ pipeline:
 - type: env
   DOCKER_REPO: aidbox/listner
 - type: bash
-  dir: example
   command: docker build -t $DOCKER_REPO:v_$GIT_COMMIT .
 - type: bash
-  dir: example
   command: docker tag $DOCKER_REPO:v_$GIT_COMMIT $DOCKER_REPO:latest
 
 - type: bash
@@ -25,6 +23,5 @@ pipeline:
   command: docker push $DOCKER_REPO:v_$GIT_COMMIT
 - type: bash
   command: docker push $DOCKER_REPO:latest
-# - type: bash
-#   dir: example
-#   command: helm upgrade --set image.tag=v_$GIT_COMMIT,image.repository=$DOCKER_REPO -i aidbox-next charts/aidbox-example
+- type: bash
+  command: helm upgrade --set image.tag=v_$GIT_COMMIT -i listmer listner
