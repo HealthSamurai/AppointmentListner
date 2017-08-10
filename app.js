@@ -6,7 +6,6 @@ var hl7 = function(appointment) {
     var fo = "bar"
     console.log(`|Some|HL7|^for|${appointment.id}
 |some|another|string`)
-    //console.log(appointment);
 };
 
 var update = function(appointment){
@@ -28,7 +27,7 @@ var processAppointment = function(appointments){
 };
 
 var poll = function(){
-    http.get(base + "/fhir/Appointment?_count=1",  (res) => {
+    http.get(base + "/fhir/Appointment?status=pending",  (res) => {
         var body = '';
         res.on('data', function(chunk){
             body += chunk;});
@@ -38,12 +37,6 @@ var poll = function(){
     });
 };
 
-poll();
+//poll();
 
-//setInterval(poll,  2000);
-
-
-
-
-
-
+setInterval(poll,  5000); 
